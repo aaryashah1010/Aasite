@@ -1,0 +1,55 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: aasite-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-aasite_db}
+      POSTGRES_USER: ${POSTGRES_USER:-aasite_app}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-AaSite_App_Passw0rd!}
+    ports:
+      - "${POSTGRES_HOST_PORT:-5433}:5432"
+    volumes:
+      - aasite-postgres-data:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-aasite_app} -d ${POSTGRES_DB:-aasite_db}"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 10s
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: aasite-pgadmin
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@aasite.local}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-Admin_Passw0rd!}
+      PGADMIN_CONFIG_SERVER_MODE: "True"
+      PGADMIN_SERVER_JSON_FILE: /pgadmin4/servers.json
+    ports:
+      - "${PGADMIN_HOST_PORT:-5050}:80"
+    volumes:
+      - aasite-pgadmin-data:/var/lib/pgadmin
+      - ./db/pgadmin/servers.json:/pgadmin4/servers.json:ro
+
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: aasite-web
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-aasite_app}:${POSTGRES_PASSWORD:-AaSite_App_Passw0rd!}@postgres:5432/${POSTGRES_DB:-aasite_db}
+      NEXT_PUBLIC_SITE_URL: ${SITE_URL:-http://localhost:3000}
+    ports:
+      - "${WEB_HOST_PORT:-3000}:3000"
+    restart: unless-stopped
+
+volumes:
+  aasite-postgres-data:
+  aasite-pgadmin-data:
