@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getContentPage } from '@/lib/queries'
 
-export const revalidate = 3600
+export const dynamic = 'force-dynamic'
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getContentPage('what-is-an-aa-meeting')

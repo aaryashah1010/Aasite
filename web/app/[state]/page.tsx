@@ -9,7 +9,7 @@ import {
   type AreaResource,
 } from '@/lib/queries'
 
-export const revalidate = 3600
+export const dynamic = 'force-dynamic'
 
 export async function generateMetadata({
   params,

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { getAllStates, getTotalLocationCount } from '@/lib/queries'
 import SearchBox from '@/components/SearchBox'
 
-export const revalidate = 3600
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'AA Meeting Finder | United States Directory',
