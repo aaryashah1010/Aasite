@@ -1,6 +1,8 @@
 import type { MetadataRoute } from 'next'
 import { getAllStateSlugs, getAllLocationSlugs } from '@/lib/queries'
 
+export const dynamic = 'force-dynamic'
+
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aameeting.com'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

@@ -36,6 +36,10 @@ Thumbs.db
 # Word temporary lock files
 ~$*.docx
 
+# Imported source documents
+*.docx
+!README*.docx
+
 # Database dumps/backups
 *.dump
 *.backup
