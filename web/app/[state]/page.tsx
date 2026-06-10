@@ -40,60 +40,38 @@ function cityAnchor(city: string) {
   return city.toLowerCase().replace(/[^a-z0-9]+/g, '-')
 }
 
-// ── Phone icon ────────────────────────────────────────────────────────────────
-function PhoneIcon() {
-  return (
-    <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-    </svg>
-  )
-}
-
 // ── Location card ─────────────────────────────────────────────────────────────
 function LocationCard({ loc, stateSlug }: { loc: Location; stateSlug: string }) {
-  const phones = loc.contacts.filter((c) => c.type === 'phone').slice(0, 2)
-
   return (
     <Link
       href={`/${stateSlug}/${loc.slug}`}
-      className="group bg-white border border-slate-200 rounded-xl p-5 hover:border-blue-400 hover:shadow-md transition-all duration-150 flex flex-col"
+      className="group bg-white border border-slate-200 rounded-xl p-5 hover:border-teal-400 hover:shadow-md transition-all duration-150 flex flex-col gap-3"
     >
-      <div className="flex items-start justify-between gap-2 mb-3">
-        <h3 className="font-semibold text-slate-800 group-hover:text-blue-700 transition-colors text-sm leading-snug">
+      <div className="flex items-start justify-between gap-2">
+        <h3 className="font-semibold text-slate-800 group-hover:text-teal-700 transition-colors text-sm leading-snug">
           {loc.service_name}
         </h3>
         <svg
           className="w-4 h-4 text-slate-300 group-hover:text-blue-500 flex-shrink-0 mt-0.5 transition-colors"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+          fill="none" viewBox="0 0 24 24" stroke="currentColor"
         >
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
       </div>
 
-      <div className="mt-auto space-y-1">
-        {phones.map((c) => (
-          <div key={c.label + c.value} className="flex items-center gap-2 text-xs text-emerald-700">
-            <PhoneIcon />
-            <span className="font-medium">{c.label}:</span>
-            <span>{c.value}</span>
-          </div>
-        ))}
-        {loc.contacts.length > 2 && (
-          <p className="text-xs text-slate-400">+{loc.contacts.length - 2} more</p>
-        )}
-        {loc.website_url && (
-          <div className="flex items-center gap-1.5 text-xs text-blue-500 pt-1">
-            <svg className="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-            </svg>
-            Website available
-          </div>
-        )}
-        {loc.contacts.length === 0 && !loc.website_url && (
-          <p className="text-xs text-slate-400 italic">Website-only listing</p>
-        )}
+      <div className="flex items-center gap-1.5 text-xs text-slate-500">
+        <svg className="w-3.5 h-3.5 flex-shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        {loc.city}
+      </div>
+
+      <div className="mt-auto flex items-center gap-1.5 text-xs font-semibold text-teal-600 group-hover:text-teal-800">
+        <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        View Details
       </div>
     </Link>
   )
@@ -121,7 +99,7 @@ export default async function StatePage({
     <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-slate-500 mb-6">
-        <Link href="/" className="hover:text-blue-600 transition-colors">
+        <Link href="/" className="hover:text-teal-600 transition-colors">
           Home
         </Link>
         <svg className="w-3.5 h-3.5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -134,7 +112,7 @@ export default async function StatePage({
       <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-8 pb-6 border-b border-slate-200">
         <div className="flex-1">
           <div className="flex items-center gap-3 mb-1.5">
-            <span className="bg-blue-800 text-white text-sm font-bold px-3 py-1 rounded-lg tracking-wide">
+            <span className="bg-teal-800 text-white text-sm font-bold px-3 py-1 rounded-lg tracking-wide">
               {state.abbreviation}
             </span>
             <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">
@@ -248,7 +226,7 @@ export default async function StatePage({
       <div className="mt-12 pt-6 border-t border-slate-200 text-center">
         <a
           href="#"
-          className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 transition-colors"
+          className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-teal-600 transition-colors"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
