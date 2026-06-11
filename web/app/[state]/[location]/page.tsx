@@ -5,8 +5,8 @@ import { getLocationDetail } from '@/lib/queries'
 
 export const dynamic = 'force-dynamic'
 
-const HELPLINE = '+18777614567'
-const HELPLINE_DISPLAY = '+1 (877) 761-4567'
+const HELPLINE = '+18773131523'
+const HELPLINE_DISPLAY = '+1 (877) 313-1523'
 
 export async function generateMetadata({
   params,
