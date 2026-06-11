@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -12,6 +13,9 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  verification: {
+    google: 'ype0eJkPh6VvVAGOnRAxVArPWj6IAiPb8Fk5YyqBzJ8',
+  },
   title: {
     default: 'AA Meeting Finder | United States Directory',
     template: '%s | AA Meeting Finder',
@@ -40,6 +44,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-32GTZR56FY"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-32GTZR56FY');
+        `}</Script>
+      </head>
       <body className="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
         <Header />
         <div className="flex-1">{children}</div>

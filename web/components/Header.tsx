@@ -52,7 +52,7 @@ export default function Header() {
             About
           </Link>
           <a
-            href="tel:+18777614567"
+            href="tel:+18773131523"
             className="ml-2 hidden sm:flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-white text-sm font-bold px-4 py-2 rounded-lg transition-colors"
           >
             <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">

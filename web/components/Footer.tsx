@@ -39,13 +39,13 @@ export default function Footer() {
             </p>
             <div className="mt-4">
               <a
-                href="tel:+18777614567"
+                href="tel:+18773131523"
                 className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-white font-bold text-sm px-4 py-2.5 rounded-xl transition-colors"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.47 11.47 0 003.59.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.59a1 1 0 01-.25 1.01l-2.2 2.2z" />
                 </svg>
-                +1 (877) 761-4567
+                +1 (877) 313-1523
               </a>
             </div>
           </div>
@@ -85,8 +85,14 @@ export default function Footer() {
         <div className="border-t border-slate-800 pt-6 flex flex-col sm:flex-row justify-between items-start gap-3 text-xs text-slate-600">
           <p>
             This directory is for informational purposes only. For the most current contact information, please reach out to your local AA intergroup directly.
+            AAMeetingFinder.com is not affiliated with Alcoholics Anonymous World Services, Inc.
           </p>
-          <p className="flex-shrink-0">© {new Date().getFullYear()} AA Meeting Finder</p>
+          <div className="flex items-center gap-4 flex-shrink-0">
+            <Link href="/privacy-policy" className="hover:text-slate-300 transition-colors whitespace-nowrap">
+              Privacy Policy
+            </Link>
+            <p>© {new Date().getFullYear()} AA Meeting Finder</p>
+          </div>
         </div>
       </div>
     </footer>
