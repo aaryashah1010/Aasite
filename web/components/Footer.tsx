@@ -55,6 +55,8 @@ export default function Footer() {
             <p className="text-slate-300 font-semibold text-sm mb-3 uppercase tracking-wider">Browse</p>
             <ul className="space-y-2 text-sm">
               <li><Link href="/" className="hover:text-teal-400 transition-colors">All States</Link></li>
+              <li><Link href="/how-aa-works" className="hover:text-teal-400 transition-colors">How AA Works</Link></li>
+              <li><Link href="/virtual-aa-meetings" className="hover:text-teal-400 transition-colors">Virtual AA Meetings</Link></li>
               <li><Link href="/about" className="hover:text-teal-400 transition-colors">About AA Meetings</Link></li>
               <li><Link href="/california" className="hover:text-teal-400 transition-colors">California</Link></li>
               <li><Link href="/new-york" className="hover:text-teal-400 transition-colors">New York</Link></li>

@@ -39,16 +39,16 @@ export default function Header() {
         </Link>
 
         <nav className="flex items-center gap-1">
-          <Link
-            href="/"
-            className="text-sm text-slate-600 hover:text-teal-700 hover:bg-teal-50 px-3 py-2 rounded-lg transition-colors font-medium"
-          >
+          <Link href="/" className="text-sm text-slate-600 hover:text-teal-700 hover:bg-teal-50 px-3 py-2 rounded-lg transition-colors font-medium">
             All States
           </Link>
-          <Link
-            href="/about"
-            className="text-sm text-slate-600 hover:text-teal-700 hover:bg-teal-50 px-3 py-2 rounded-lg transition-colors font-medium"
-          >
+          <Link href="/how-aa-works" className="hidden md:block text-sm text-slate-600 hover:text-teal-700 hover:bg-teal-50 px-3 py-2 rounded-lg transition-colors font-medium">
+            How AA Works
+          </Link>
+          <Link href="/virtual-aa-meetings" className="hidden md:block text-sm text-slate-600 hover:text-teal-700 hover:bg-teal-50 px-3 py-2 rounded-lg transition-colors font-medium">
+            Virtual Meetings
+          </Link>
+          <Link href="/about" className="hidden lg:block text-sm text-slate-600 hover:text-teal-700 hover:bg-teal-50 px-3 py-2 rounded-lg transition-colors font-medium">
             About
           </Link>
           <a
