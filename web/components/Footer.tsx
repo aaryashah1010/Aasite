@@ -93,6 +93,9 @@ export default function Footer() {
             <Link href="/privacy-policy" className="hover:text-slate-300 transition-colors whitespace-nowrap">
               Privacy Policy
             </Link>
+            <Link href="/terms-of-use" className="hover:text-slate-300 transition-colors whitespace-nowrap">
+              Terms of Use
+            </Link>
             <p>© {new Date().getFullYear()} AA Meeting Finder</p>
           </div>
         </div>

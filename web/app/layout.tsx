@@ -59,6 +59,11 @@ export default function RootLayout({
       <body className="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
         <Header />
         <div className="flex-1">{children}</div>
+        <div className="bg-slate-100 border-t border-slate-200 py-2 text-center">
+          <p className="text-xs text-slate-400 tracking-wide">
+            Information sourced from credible and trusted institutions
+          </p>
+        </div>
         <Footer />
         <FloatingCallButton />
       </body>
