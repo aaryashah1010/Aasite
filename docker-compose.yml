@@ -14,10 +14,10 @@ services:
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-aasite_app} -d ${POSTGRES_DB:-aasite_db}"]
-      interval: 5s
-      timeout: 3s
-      retries: 20
-      start_period: 10s
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
 
   pgadmin:
     image: dpage/pgadmin4:latest
