@@ -11,6 +11,7 @@ services:
     volumes:
       - aasite-postgres-data:/var/lib/postgresql/data
       - ./db/init:/docker-entrypoint-initdb.d:ro
+    restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-aasite_app} -d ${POSTGRES_DB:-aasite_db}"]
       interval: 5s
@@ -31,6 +32,7 @@ services:
       PGADMIN_SERVER_JSON_FILE: /pgadmin4/servers.json
     ports:
       - "${PGADMIN_HOST_PORT:-5050}:80"
+    restart: unless-stopped
     volumes:
       - aasite-pgadmin-data:/var/lib/pgadmin
       - ./db/pgadmin/servers.json:/pgadmin4/servers.json:ro
