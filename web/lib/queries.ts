@@ -15,6 +15,8 @@ export type StateInfo = {
   name: string
   abbreviation: string
   slug: string
+  seo_title: string | null
+  meta_description: string | null
 }
 
 export type Contact = {
@@ -36,6 +38,9 @@ export type LocationDetail = Location & {
   state_name: string
   state_slug: string
   state_abbreviation: string
+  seo_title: string | null
+  meta_description: string | null
+  h1_override: string | null
 }
 
 export type AreaResource = {
@@ -77,7 +82,7 @@ export async function getTotalLocationCount(): Promise<number> {
 
 export async function getStateBySlug(slug: string): Promise<StateInfo | null> {
   const { rows } = await pool.query<StateInfo>(
-    'SELECT id, name, abbreviation, slug FROM states WHERE slug = $1',
+    'SELECT id, name, abbreviation, slug, seo_title, meta_description FROM states WHERE slug = $1',
     [slug]
   )
   return rows[0] ?? null
@@ -109,6 +114,7 @@ export async function getLocationDetail(
 ): Promise<LocationDetail | null> {
   const { rows } = await pool.query<LocationDetail>(`
     SELECT sl.id, sl.city, sl.service_name, sl.website_url, sl.slug,
+           sl.seo_title, sl.meta_description, sl.h1_override,
            s.name AS state_name, s.slug AS state_slug, s.abbreviation AS state_abbreviation,
            COALESCE(
              json_agg(
@@ -122,6 +128,7 @@ export async function getLocationDetail(
     LEFT JOIN contact_methods cm ON cm.service_location_id = sl.id
     WHERE s.slug = $1 AND sl.slug = $2 AND sl.is_active = true
     GROUP BY sl.id, sl.city, sl.service_name, sl.website_url, sl.slug,
+             sl.seo_title, sl.meta_description, sl.h1_override,
              s.name, s.slug, s.abbreviation
   `, [stateSlug, locationSlug])
   return rows[0] ?? null

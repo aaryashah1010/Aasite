@@ -17,8 +17,12 @@ export async function generateMetadata({
   const loc = await getLocationDetail(state, location)
   if (!loc) return {}
   return {
-    title: `${loc.service_name} — ${loc.city}, ${loc.state_name}`,
-    description: `AA service location in ${loc.city}, ${loc.state_name}. Find Alcoholics Anonymous support and meeting information.`,
+    title: loc.seo_title
+      ? { absolute: loc.seo_title }
+      : `${loc.service_name} — ${loc.city}, ${loc.state_name}`,
+    description:
+      loc.meta_description ??
+      `AA service location in ${loc.city}, ${loc.state_name}. Find Alcoholics Anonymous support and meeting information.`,
   }
 }
 
@@ -59,7 +63,7 @@ export default async function LocationPage({
             </span>
           </div>
 
-          <h1 className="text-2xl sm:text-3xl font-bold leading-snug mb-5">{loc.service_name}</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold leading-snug mb-5">{loc.h1_override ?? loc.service_name}</h1>
 
           {/* Badges */}
           <div className="flex flex-wrap gap-2">

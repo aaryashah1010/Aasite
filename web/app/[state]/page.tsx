@@ -20,8 +20,12 @@ export async function generateMetadata({
   const state = await getStateBySlug(stateSlug)
   if (!state) return {}
   return {
-    title: `AA Meetings in ${state.name}`,
-    description: `Find Alcoholics Anonymous service offices, intergroups, and central offices in ${state.name}.`,
+    title: state.seo_title
+      ? { absolute: state.seo_title }
+      : `AA Meetings in ${state.name}`,
+    description:
+      state.meta_description ??
+      `Find Alcoholics Anonymous service offices, intergroups, and central offices in ${state.name}.`,
   }
 }
 
