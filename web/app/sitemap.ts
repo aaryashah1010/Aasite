@@ -3,7 +3,7 @@ import { getAllStateSlugs, getAllLocationSlugs } from '@/lib/queries'
 
 export const dynamic = 'force-dynamic'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aameeting.com'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aameetingfinder.com'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [stateSlugs, locationSlugs] = await Promise.all([

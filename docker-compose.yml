@@ -41,6 +41,8 @@ services:
     build:
       context: ./web
       dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_SITE_URL: ${SITE_URL:-http://localhost:3000}
     container_name: aasite-web
     depends_on:
       postgres:
