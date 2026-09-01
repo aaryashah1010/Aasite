@@ -23,6 +23,9 @@ export async function generateMetadata({
     description:
       loc.meta_description ??
       `AA service location in ${loc.city}, ${loc.state_name}. Find Alcoholics Anonymous support and meeting information.`,
+    alternates: {
+      canonical: `/${loc.state_slug}/${loc.slug}`,
+    },
   }
 }
 

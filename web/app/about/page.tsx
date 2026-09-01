@@ -12,6 +12,9 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       page?.meta_description ??
       'Learn about Alcoholics Anonymous meetings — what they are, how to select one, and how to get the most out of your first meeting.',
+    alternates: {
+      canonical: '/about',
+    },
   }
 }
 

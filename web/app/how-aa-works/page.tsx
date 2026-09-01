@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: 'How AA Works | What Makes Alcoholics Anonymous Effective',
   description:
     'Discover what makes Alcoholics Anonymous work — the foundation of real, lasting recovery through community, structure, and the Twelve Steps.',
+  alternates: {
+    canonical: '/how-aa-works',
+  },
 }
 
 const faqs = [

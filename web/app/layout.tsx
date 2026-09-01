@@ -12,9 +12,16 @@ const inter = Inter({
   display: 'swap',
 })
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aameetingfinder.com'
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   verification: {
     google: 'ype0eJkPh6VvVAGOnRAxVArPWj6IAiPb8Fk5YyqBzJ8',
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
   title: {
     default: 'AA Meeting Finder | United States Directory',

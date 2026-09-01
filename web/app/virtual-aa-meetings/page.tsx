@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: 'Virtual AA Meetings | Online Alcoholics Anonymous Support',
   description:
     'Find online and virtual AA meetings from the comfort of your home. Join Alcoholics Anonymous meetings via phone or video — free, anonymous, and available anytime.',
+  alternates: {
+    canonical: '/virtual-aa-meetings',
+  },
 }
 
 const benefits = [

@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: 'AA Meeting Finder | United States Directory',
   description:
     'Find Alcoholics Anonymous service offices, intergroups, and central offices across all 50 US states and territories.',
+  alternates: {
+    canonical: '/',
+  },
 }
 
 export default async function HomePage() {

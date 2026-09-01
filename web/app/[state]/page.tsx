@@ -26,6 +26,9 @@ export async function generateMetadata({
     description:
       state.meta_description ??
       `Find Alcoholics Anonymous service offices, intergroups, and central offices in ${state.name}.`,
+    alternates: {
+      canonical: `/${state.slug}`,
+    },
   }
 }
 

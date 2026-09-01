@@ -4,6 +4,9 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Terms of Use',
   description: 'Terms of Use for AAMeetingFinder.com — please read before using our website.',
+  alternates: {
+    canonical: '/terms-of-use',
+  },
 }
 
 const sections = [
