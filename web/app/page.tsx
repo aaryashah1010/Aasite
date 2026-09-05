@@ -5,13 +5,12 @@ import SearchBox from '@/components/SearchBox'
 
 export const dynamic = 'force-dynamic'
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aameetingfinder.com'
+
 export const metadata: Metadata = {
   title: 'AA Meeting Finder | United States Directory',
   description:
     'Find Alcoholics Anonymous service offices, intergroups, and central offices across all 50 US states and territories.',
-  alternates: {
-    canonical: '/',
-  },
 }
 
 export default async function HomePage() {
@@ -22,6 +21,7 @@ export default async function HomePage() {
 
   return (
     <main>
+      <link rel="canonical" href={`${SITE_URL}/`} />
       {/* ── Hero ── */}
       <section className="relative bg-gradient-to-br from-teal-950 via-teal-900 to-teal-800 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDM0djZoNnYtNmgtNnptNiA2djZoNnYtNmgtNnptLTEyIDB2NmgtNnYtNmg2em0xMiAwaDZ2Nmg2di02aC02em0tMTIgMHYtNmg2djZoLTZ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-40" />

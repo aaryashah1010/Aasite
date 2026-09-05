@@ -1,12 +1,20 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { getLocationDetail } from '@/lib/queries'
+import { getLocationDetail, getAllLocationSlugs } from '@/lib/queries'
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 3600
 
 const HELPLINE = '+18773131523'
 const HELPLINE_DISPLAY = '+1 (877) 313-1523'
+
+export async function generateStaticParams() {
+  const pairs = await getAllLocationSlugs()
+  return pairs.map(({ state_slug, location_slug }) => ({
+    state: state_slug,
+    location: location_slug,
+  }))
+}
 
 export async function generateMetadata({
   params,

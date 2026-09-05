@@ -5,11 +5,17 @@ import {
   getStateBySlug,
   getLocationsByState,
   getAreaResources,
+  getAllStateSlugs,
   type Location,
   type AreaResource,
 } from '@/lib/queries'
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 3600
+
+export async function generateStaticParams() {
+  const slugs = await getAllStateSlugs()
+  return slugs.map((slug) => ({ state: slug }))
+}
 
 export async function generateMetadata({
   params,

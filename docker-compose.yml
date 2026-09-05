@@ -41,8 +41,10 @@ services:
     build:
       context: ./web
       dockerfile: Dockerfile
+      network: host
       args:
         NEXT_PUBLIC_SITE_URL: ${SITE_URL:-http://localhost:3000}
+        DATABASE_URL: postgresql://${POSTGRES_USER:-aasite_app}:${POSTGRES_PASSWORD:-AaSite_App_Passw0rd!}@localhost:${POSTGRES_HOST_PORT:-5433}/${POSTGRES_DB:-aasite_db}
     container_name: aasite-web
     depends_on:
       postgres:
